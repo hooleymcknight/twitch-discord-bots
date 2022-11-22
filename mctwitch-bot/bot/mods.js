@@ -19,6 +19,8 @@ function getGame(client, twitch_data, callback) {
             // followers: number of followers,
             // broadcaster_type: 'affiliate',
             // description: string bio
+        console.log(body)
+        console.log(body.data)
         callback(body.data[0]);
     });
 }

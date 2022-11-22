@@ -1,7 +1,13 @@
 const ellie = require('./bot/ellie-brain');
 const msg = require('./bot/message');
-const Discord = require('discord.js');
-const bot = new Discord.Client({ autoReconnect: true });
+const { Client, GatewayIntentBits } = require('discord.js');
+const bot = new Client({
+    autoReconnect: true,
+    intents: [
+      GatewayIntentBits.Guilds,
+		  GatewayIntentBits.GuildMessages,
+    ]
+});
 
 const prefix = '!';
 

@@ -1,28 +1,35 @@
-const dina = require('./bot/dina-brain');
-const msg = require('./bot/message');
-const patrol = require('./bot/functions');
-const Discord = require('discord.js');
-const { Client, MessageEmbed } = require('discord.js');
+const dina = require('./bot/dina-brain')
+const msg = require('./bot/message')
+const patrol = require('./bot/functions')
+const selfCare = require('./bot/selfCare')
+const { Client, GatewayIntentBits, MessageEmbed } = require('discord.js')
 const bot = new Client({
     autoReconnect: true,
-    ws: {
-        intents: ['GUILD_MESSAGES', 'GUILDS', 'GUILD_MESSAGE_REACTIONS']
-    },
-    partials: ['REACTION', 'MESSAGE', 'CHANNEL']
-});
+    intents: [
+      GatewayIntentBits.Guilds,
+		  GatewayIntentBits.GuildMessages,
+      GatewayIntentBits.MessageContent,
+    ]
+})
 
-let prefix = '!';
+const prefix = '!'
 
 bot.on('ready', () => {
-  let twitch = bot.guilds.cache.get('762597160126119937');
-  let mod_chat = twitch.channels.cache.get('780626462846746675');
-  let roles_channel = twitch.channels.cache.get('771597376124747789');
-  patrol.twitchRoles(twitch);
-});
+  // twitch is an outdated name for the channel, these functions need updated
+  const twitch = bot.guilds.cache.get('762597160126119937')
+  patrol.twitchRoles(twitch)
 
-bot.on('message', message => {
-  let twitch = bot.guilds.cache.get('762597160126119937');
-  msg.route(bot, message, prefix);
-});
+  // the below is for if I set up a function to check what Dina missed in
+  // the self care channel when she was offline. this is currently not a thing though
 
-bot.login(dina.login());
+  // const scChannel = bot.guilds.cache.get('1044531488210825257')
+  // selfCare.checkMissed(scChannel)
+})
+
+bot.on('messageCreate', (message) => {
+  if (message.author.bot) return
+  if (message.channelId !== '814694638144978985' && message.channelId !== '1044531488210825257') return
+  msg.route(message, prefix)
+})
+
+bot.login(dina.login())

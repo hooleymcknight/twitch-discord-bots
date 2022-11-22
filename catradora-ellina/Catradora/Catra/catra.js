@@ -1,8 +1,14 @@
 const catra = require('./bot/catra-brain');
 const msg = require('./bot/message');
 const fn = require('./bot/functions');
-const Discord = require('discord.js');
-const bot = new Discord.Client({ autoReconnect: true });
+const { Client, GatewayIntentBits } = require('discord.js');
+const bot = new Client({
+    autoReconnect: true,
+    intents: [
+      GatewayIntentBits.Guilds,
+		  GatewayIntentBits.GuildMessages,
+    ]
+});
 
 let prefix = '!';
 

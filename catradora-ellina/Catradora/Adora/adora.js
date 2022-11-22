@@ -1,8 +1,14 @@
 const adora = require('./bot/adora-brain');
 const msg = require('./bot/message');
 const rebellion = require('./bot/functions');
-const { Client, MessageEmbed } = require('discord.js');
-const bot = new Client({ autoReconnect: true });
+const { Client, GatewayIntentBits } = require('discord.js');
+const bot = new Client({
+    autoReconnect: true,
+    intents: [
+      GatewayIntentBits.Guilds,
+		  GatewayIntentBits.GuildMessages,
+    ]
+});
 
 let prefix = '!';
 
