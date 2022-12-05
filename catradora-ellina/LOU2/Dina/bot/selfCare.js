@@ -7,7 +7,13 @@ const checkMissed = (channel) => {
 }
 
 const store = (message) => {
-  const care = message.content.split('care ')[1]
+  let care = ''
+  if (message.content.includes('care')) {
+    care = message.content.split('care ')[1]
+  }
+  else {
+    care = message.content.split('<#1044531488210825257> ')[1]
+  }
 
   let obj = {}
   obj[message.author.id] = [care, message.id]

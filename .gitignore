@@ -9,6 +9,9 @@ keys/
 *.ps1
 *.cmd
 
+selfCare_storage.json
+saved_functions.js
+
 # Node artifact files
 node_modules/
 dist/
