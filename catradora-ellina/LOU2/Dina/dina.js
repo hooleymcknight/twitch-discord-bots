@@ -1,7 +1,7 @@
 const dina = require('./bot/dina-brain')
 const msg = require('./bot/message')
 const patrol = require('./bot/functions')
-// const selfCare = require('./bot/selfCare')
+const selfCare = require('./bot/selfCare')
 
 const { Client, GatewayIntentBits, EmbedBuilder } = require('discord.js')
 const bot = new Client({
@@ -22,17 +22,16 @@ bot.on('ready', () => {
   patrol.fsRoles(fiddlesitters)
 
   // the below is for if I set up a function to check what Dina missed in
-  // the self care channel when she was offline. this is currently not a thing though
-
-  // const scChannel = bot.guilds.cache.get('1044531488210825257')
-  // selfCare.checkMissed(scChannel)
+  // the self care channel when she was offline.
+  const selfCareChannel = fiddlesitters.channels.cache.get('1044531488210825257')
+  selfCare.checkMissed(selfCareChannel, prefix)
 })
 
 bot.on('messageCreate', (message) => {
   if (message.author.bot) return
   if (message.channelId !== '814694638144978985' && message.channelId !== '1044531488210825257') return
 
-  msg.route(message, prefix)
+  msg.route(fiddlesitters, message, prefix)
 })
 
 bot.on('messageReactionAdd', (reaction, user) => {

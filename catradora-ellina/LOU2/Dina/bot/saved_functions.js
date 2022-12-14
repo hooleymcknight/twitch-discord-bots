@@ -1,61 +1,58 @@
+const fiddlesitters = bot.guilds.cache.get('762597160126119937')
 if(message.content === 'editit') {
-    const embed = new Discord.MessageEmbed()
-      .setColor('#4f1665')
-      .setTitle('React on this message to get you some new roles.')
-      .setDescription(`
-          <:ellie:845277458143248395> — The Last of Us, Parts I & II
-          <:jackbox:791543415665852447> — Jackbox
-          <:sus:771636662971006977> — Among Us
-          <:eso:845277561336496128> — Elder Scrolls Online
-          <:stellaris:791543609538773003> — Stellaris
-          <:overwatch:845277535599722566> — Overwatch
-          <:phasmophobia:771645089151582228> — Phasmophobia
-          <:dbd:771643407398862849> — Dead by Daylight
+  const embed = new EmbedBuilder()
+    .setColor('#4f1665')
+    .setTitle('React on this message to get you some new roles.')
+    .setDescription(`
+        <:jackbox:791543415665852447> — Jackbox
+        <:sus:771636662971006977> — Among Us
+        <:pridebean:796190701431423006> — Amogus VR
+        <:eso:845277561336496128> — Elder Scrolls Online
+        <:stellaris:791543609538773003> — Stellaris
+        <:overwatch:845277535599722566> — Overwatch
+        <:phasmophobia:771645089151582228> — Phasmophobia
+        <:dbd:771643407398862849> — Dead by Daylight
 
-          <:prideglasses:794321178273120296> — LGBTQ+
-          🇹 — they/them
-          🇸 — she/her
-          🇭 — he/him
-
-          <:exu:858135615940722688> - Exandria Unlimited Spoilers
-      `);
-      twitch.channels.cache.get('771597376124747789').messages.fetch({ limit: 5 }).then(messages => {
-          var message = messages.find(x => x.id === '845283396493901834');
-          message.edit(embed);
-      });
-}
-else if(message.content === 'exu') {
-    twitch.channels.cache.get('771597376124747789').messages.fetch({ limit: 5 }).then(messages => {
-        var message = messages.find(x => x.id === '845283396493901834');
-        message.react('858135615940722688'); // exu
-    });
+        <:prideglasses:794321178273120296> — LGBTQ+
+        🇹 — they/them
+        🇸 — she/her
+        🇭 — he/him
+    `)
+    
+    fiddlesitters.channels.cache.get('771597376124747789').messages.fetch({ limit: 5 }).then((messages) => {
+        const message = messages.find(x => x.id === '845283396493901834')
+        message.edit({ embeds: [embed] })
+    })
 }
 
+
+// the below might not be needed, or at least not the roleReactions bit. I'm not sure right now because things have changed a lot and I dont think we collect reactions like we did before.
+// but keep an eye out :thinking:
 
 // put this section in bot.ready to redo this in the future:
 const embed = new Discord.MessageEmbed()
   .setColor('#4f1665')
   .setTitle('React on this message to get you some new roles.')
   .setDescription(`
-      <:ellie:845277458143248395> — The Last of Us, Parts I & II
-      <:jackbox:791543415665852447> — Jackbox
-      <:sus:771636662971006977> — Among Us
-      <:eso:845277561336496128> — Elder Scrolls Online
-      <:stellaris:791543609538773003> — Stellaris
-      <:overwatch:845277535599722566> — Overwatch
-      <:phasmophobia:771645089151582228> — Phasmophobia
-      <:dbd:771643407398862849> — Dead by Daylight
+    <:jackbox:791543415665852447> — Jackbox
+    <:sus:771636662971006977> — Among Us
+    <:pridebean:796190701431423006> — Amogus VR
+    <:eso:845277561336496128> — Elder Scrolls Online
+    <:stellaris:791543609538773003> — Stellaris
+    <:overwatch:845277535599722566> — Overwatch
+    <:phasmophobia:771645089151582228> — Phasmophobia
+    <:dbd:771643407398862849> — Dead by Daylight
 
-      <:prideglasses:794321178273120296> — LGBTQ+
-      🇹 — they/them
-      🇸 — she/her
-      🇭 — he/him
-  `);
-  patrol.roleReactions(twitch);
-  roles_channel.send(embed);
+    <:prideglasses:794321178273120296> — LGBTQ+
+    🇹 — they/them
+    🇸 — she/her
+    🇭 — he/him
+  `)
+  patrol.roleReactions(fiddlesitters)
+  roles_channel.send({ embeds: [embed] })
 
 
   // on twitch collector end
-  twitch_collector.on('end', collected => {
-      console.log('I am stopping');
+  twitch_collector.on('end', (collected) => {
+      console.log('I am stopping', collected)
   })

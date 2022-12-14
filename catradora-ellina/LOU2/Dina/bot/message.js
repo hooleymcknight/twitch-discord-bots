@@ -3,20 +3,28 @@
 const patrol = require('./functions')
 const selfCare = require('./selfCare')
 
-function route(message, prefix) { // export
+function route(fiddlesitters, message, prefix) { // export
     if (!message.content.startsWith(prefix) && !message.content.startsWith('<#1044531488210825257>')) return
     
-    if ((message.content.includes('self') && message.content.includes('care')) || message.content.startsWith('<#1044531488210825257>')) { // this feels like a general way to catch it all if someone types things wrong
+    if (selfCare.scQualifies(message, prefix)) {
         selfCare.store(message)
         const encouragement = selfCare.encourage()
         message.reply(encouragement)
     }
+    else if (message.content.includes('encourage')) {
+        const prevMessage = message.content.split(' ')[1]
+        fiddlesitters.channels.cache.get('1044531488210825257').messages.fetch({ limit: 5 }).then((msgs) => {
+            const prevMsg = msgs.find(x => x.id === prevMessage)
+            const prevEnc = selfCare.encourage()
+            prevMsg.reply(prevEnc)
+        })
+    }
     else {
-        respond(message)
+        respond(fiddlesitters, message)
     }
 }
 
-function respond(message) { // internal
+function respond(fiddlesitters, message) { // internal
     const input = message.content.toLowerCase().slice(1, message.content.length)
     switch (input.split(' ')[0]) {
         case "ping":
