@@ -5,6 +5,7 @@ if(message.content === 'editit') {
     .setTitle('React on this message to get you some new roles.')
     .setDescription(`
         <:jackbox:791543415665852447> — Jackbox
+        <:pokeball:1043262398192173076> — Pokemanz
         <:sus:771636662971006977> — Among Us
         <:pridebean:796190701431423006> — Amogus VR
         <:eso:845277561336496128> — Elder Scrolls Online
@@ -35,6 +36,7 @@ const embed = new Discord.MessageEmbed()
   .setTitle('React on this message to get you some new roles.')
   .setDescription(`
     <:jackbox:791543415665852447> — Jackbox
+    <:pokeball:1043262398192173076> — Pokemanz
     <:sus:771636662971006977> — Among Us
     <:pridebean:796190701431423006> — Amogus VR
     <:eso:845277561336496128> — Elder Scrolls Online

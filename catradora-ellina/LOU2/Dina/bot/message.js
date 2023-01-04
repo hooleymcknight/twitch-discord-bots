@@ -13,7 +13,7 @@ function route(fiddlesitters, message, prefix) { // export
     }
     else if (message.content.includes('encourage')) {
         const prevMessage = message.content.split(' ')[1]
-        fiddlesitters.channels.cache.get('1044531488210825257').messages.fetch({ limit: 5 }).then((msgs) => {
+        fiddlesitters.channels.cache.get('1044531488210825257').messages.fetch({ limit: 10 }).then((msgs) => {
             const prevMsg = msgs.find(x => x.id === prevMessage)
             const prevEnc = selfCare.encourage()
             prevMsg.reply(prevEnc)

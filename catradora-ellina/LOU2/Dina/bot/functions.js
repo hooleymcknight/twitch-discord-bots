@@ -19,7 +19,7 @@ function fsRoles(guild) {
     })
 }
 
-async function updateRoles (guild, updateType, reaction, user) {
+async function updateRoles(guild, updateType, reaction, user) {
     const cachedUser = guild.members.cache.find(x => x.id === user.id)
     const member = await guild.members.fetch(cachedUser)
     const emoji = processRole(reaction.emoji.name)
@@ -52,6 +52,7 @@ function processRole(emoji) {
 
 const embed_emojis = {
     'jackbox': 'Jackbox',
+    'pokeball': 'Pokemanz',
     'sus': 'Among Us',
     'pridebean': 'Amogus VR',
     'eso': 'ESO',
@@ -70,6 +71,7 @@ function roleReactions(guild) {
         const message = messages.find(x => x.id === '845283396493901834')
 
         message.react('791543415665852447') // jackbox
+        message.react('1043262398192173076') // pokeball
         message.react('771636662971006977') // sus (Among Us)
         message.react('796190701431423006') // pridebean (Amogus VR)
         message.react('845277561336496128') // eso

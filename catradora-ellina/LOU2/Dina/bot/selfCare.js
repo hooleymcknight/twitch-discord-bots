@@ -81,7 +81,6 @@ const encouragements = [
   'Be the change that you wish to see in the world.',
   'I admire how strong you are!',
   'You are my sunshine. :sun_with_face:',
-  '\[T]/ (if this doesn\'t work, call for help)',
   '<:praisethesun:1049967066901389312>',
   'B double E double R - U - N, beer run... Celebrate!\n https://youtu.be/PHjNEtEWjEU',
   'You deserve a coffee!',
