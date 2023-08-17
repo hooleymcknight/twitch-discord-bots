@@ -88,7 +88,20 @@ const encouragements = [
   'Good stretch!',
   'What a win!',
   'You\'re a bad bitch!',
-  // 'According to all known laws of aviation, there is no way a bee should be able to fly. Its wings are too small to get its fat little body off the ground. The bee, of course, flies anyway because bees don\'t care what humans think is impossible.',
+  'According to all known laws of aviation, there is no way a bee should be able to fly. Its wings are too small to get its fat little body off the ground. The bee, of course, flies anyway because bees don\'t care what humans think is impossible.',
+  'Oh no, I gjallarhorned a baby.',
+  'I don\'t want you to cause divorce, you just do.',
+  'I have no idea if there\'s cocaine in this video game or not. Niiiice, we got a lot of money!',
+  'These fucking kids. I\'m a working adult, I don\'t have time to lose.',
+  'Holly is into thoroughly tussled women.',
+  'Guys, I can Tokyo drift this child.',
+  'I\'m a borrower at heart.',
+  'They are one of the most LGBTQ-friendly of all the missile companies, though.',
+  'Bourbon is always there for me.',
+  'You are truly in the spaghetti. :spaghetti:',
+  'You\'re the most durable. You got all that weak shit out of you at birth.',
+  'Honey\'s gonna bake *your* ham.',
+  'Have some mustard. <:mustard:1099250342631309403>',
 ]
 
 function pickRandom(min, max) {

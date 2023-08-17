@@ -27,10 +27,14 @@ function route(fiddlesitters, message, prefix) { // export
 function respond(fiddlesitters, message) { // internal
     const input = message.content.toLowerCase().slice(1, message.content.length)
     switch (input.split(' ')[0]) {
+        case "bad":
+            // patrol.baddie(fiddlesitters, message)
+            break
         case "ping":
             message.channel.send("Pong!")
             break
         case "test":
+            console.log(message)
             break
         case "help":
             helpList(message)

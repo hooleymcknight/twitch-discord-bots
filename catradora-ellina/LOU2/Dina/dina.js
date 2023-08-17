@@ -17,8 +17,20 @@ const bot = new Client({
 const prefix = '!'
 let fiddlesitters
 
+const approvedChannels = [
+  '814694638144978985', // bots-and-code
+  '1044531488210825257', // self care
+  '794399398330892289', // memes and stuff
+]
+
 bot.on('ready', () => {
   fiddlesitters = bot.guilds.cache.get('762597160126119937')
+  // const botsChannel = fiddlesitters.channels.cache.get('814694638144978985')
+
+  // remove anyone with the Bad role
+  patrol.removeBad(fiddlesitters)
+
+  // watch for people adding roles in #roles channel
   patrol.fsRoles(fiddlesitters)
 
   // the below is for if I set up a function to check what Dina missed in
@@ -29,7 +41,7 @@ bot.on('ready', () => {
 
 bot.on('messageCreate', (message) => {
   if (message.author.bot) return
-  if (message.channelId !== '814694638144978985' && message.channelId !== '1044531488210825257') return
+  if (!approvedChannels.includes(message.channelId)) return
 
   msg.route(fiddlesitters, message, prefix)
 })
